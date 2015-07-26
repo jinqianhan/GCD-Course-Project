@@ -5,6 +5,7 @@
 ## 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 ## create variables
+library(dplyr)
 alabel <- read.table("./activity_labels.txt")
 feature <-read.table("./features.txt")
 xtest <- read.table("./test/X_test.txt")
@@ -39,6 +40,12 @@ for (i in 1:length(datname)) {
         meansd[i] <- grepl("mean|std",datname[i])
     }
 }
-## subset out 
-
+## subset out appropriate columns
+newdat <- merged[, meansd]
+## relabel Activity with corresponding label
+joindat <- inner_join(newdat, alabel, by = c("Activity" = "V1"), copy = FALSE)
+joindat <- rename(joindat, Activity = V2)
+## bring the Activity label back to 2nd column
+joindat <- joindat[,-2]
+joindat <- joindat[, c(1,81,2:80)]
 
