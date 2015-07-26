@@ -49,3 +49,11 @@ joindat <- rename(joindat, Activity = V2)
 joindat <- joindat[,-2]
 joindat <- joindat[, c(1,81,2:80)]
 
+##get mean of the data by subject and activity via aggregate
+tidydat <- aggregate(joindat, by=list(joindat$Activity, joindat$Subject), FUN = mean)
+tidydat <- tidydat[,c(-2,-4)]
+tidydat <- rename(tidydat, Activity = Group.1)
+tidydat <- tidydat[, c(2,1, 3:81)]
+
+write.table(tidydat, file = "tidydat.csv", row.names = FALSE)
+
