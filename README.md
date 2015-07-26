@@ -13,5 +13,5 @@ Then the data is finalized by aggregating the merged data by summarizing the col
 
 Finally, a tidydat.txt file is produced, with row.names=FALSE.
 To see the read the txt file, simply call:
-r<-read.table("tidydat.txt")
+r<-read.table("tidydat.txt", header= TRUE)
 View(r)

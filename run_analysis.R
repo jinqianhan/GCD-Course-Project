@@ -56,5 +56,5 @@ tidydat <- rename(tidydat, Activity = Group.1)
 tidydat <- tidydat[, c(2,1, 3:81)]
 
 write.table(tidydat, file = "tidydat.txt", row.names = FALSE)
-##r<-read.table("tidydat.txt")
-##View(r)
+r<-read.table("tidydat.txt" , header=TRUE)
+View(r)
