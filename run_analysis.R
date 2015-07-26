@@ -55,5 +55,5 @@ tidydat <- tidydat[,c(-2,-4)]
 tidydat <- rename(tidydat, Activity = Group.1)
 tidydat <- tidydat[, c(2,1, 3:81)]
 
-write.table(tidydat, file = "tidydat.csv", row.names = FALSE)
+write.table(tidydat, file = "tidydat.txt", row.names = FALSE)
 
